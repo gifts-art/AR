@@ -42,7 +42,11 @@
   <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script>
+    // ========== КОНФИГУРАЦИЯ ==========
+    // Видео: сменете "video.mp4" на името на вашия видеофайл (напр. "reklama.mp4").
+    // Маркер: това е вариант с Hiro – отпечатайте https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png и насочете камерата към него.
     (function () {
+      var VIDEO_FILE = 'video.mp4';  // <-- Вашето видео
       var startBtn = document.getElementById('start-btn');
       var startScreen = document.getElementById('start-screen');
       var sceneContainer = document.getElementById('scene-container');
@@ -53,7 +57,7 @@
         sceneContainer.innerHTML = [
           '<div class="arjs-loader"><div>Зареждане... Разрешите достъп до камерата.</div></div>',
           '<a-scene id="ar-scene" embedded vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true; precision: medium;" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false; detectionMode: mono; matrixCodeType: 3x3;">',
-          '  <a-assets><video id="vid" crossorigin="anonymous" loop playsinline webkit-playsinline src="video.mp4"></video></a-assets>',
+          '  <a-assets><video id="vid" crossorigin="anonymous" loop playsinline webkit-playsinline src="' + VIDEO_FILE + '"></video></a-assets>',
           '  <a-marker type="pattern" url="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@2.2.2/data/data/patt.hiro" emitevents="true">',
           '    <a-plane position="0 0 0" rotation="-90 0 0" width="1" height="0.5625" material="shader: flat; src: #vid;"></a-plane>',
           '  </a-marker>',

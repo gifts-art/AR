@@ -42,7 +42,12 @@
   <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <script>
+    // ========== КОНФИГУРАЦИЯ ==========
+    // Видео: сменете "video.mp4" на името на вашия видеофайл.
+    // Снимка (маркер): сложете 3-те файла от NFT Marker Creator (име.fset, .fset3, .iset) в папката и сменете MARKER_NAME по-долу.
     (function () {
+      var VIDEO_FILE = 'video.mp4';   // <-- Вашето видео
+      var MARKER_NAME = 'marker-image';  // <-- Маркер от marker-image.png (Sonsuz Rota). Генерирайте 3-те файла от тази снимка и ги сложете тук.
       var startBtn = document.getElementById('start-btn');
       var startScreen = document.getElementById('start-screen');
       var sceneContainer = document.getElementById('scene-container');
@@ -53,8 +58,8 @@
         sceneContainer.innerHTML = [
           '<div class="arjs-loader"><div>Зареждане... Разрешите достъп до камерата.</div></div>',
           '<a-scene id="ar-scene" embedded vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true; precision: medium;" arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">',
-          '  <a-assets><video id="vid" crossorigin="anonymous" loop playsinline webkit-playsinline src="video.mp4"></video></a-assets>',
-          '  <a-nft type="nft" url="marker" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" emitevents="true">',
+          '  <a-assets><video id="vid" crossorigin="anonymous" loop playsinline webkit-playsinline src="' + VIDEO_FILE + '"></video></a-assets>',
+          '  <a-nft type="nft" url="' + MARKER_NAME + '" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" emitevents="true">',
           '    <a-plane position="0 0 0" rotation="-90 0 0" width="1" height="0.5625" material="shader: flat; src: #vid;"></a-plane>',
           '  </a-nft>',
           '  <a-entity camera></a-entity>',
